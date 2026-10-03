@@ -1,0 +1,265 @@
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #0b0b0b;
+    color: #ffffff;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    overflow-x: hidden;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+/* =========================
+   HERO
+========================= */
+
+#hero {
+    min-height: 30vh; /* O la altura que prefieras */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center;
+    text-align: center;
+    padding: 120px 20px 40px 20px; /* Controla el espacio superior aquí */
+}
+
+#hero h1 {
+    font-size: clamp(32px, 5vw, 60px);
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+#hero p {
+    margin-top: 10px; /* Reducido para acercarlo al título principal */
+    color: #888;
+    font-size: clamp(14px, 2vw, 18px);
+    letter-spacing: 1px;
+}
+
+
+/* =========================
+   PORTFOLIO
+========================= */
+
+#portfolio {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 20px;
+    position: relative;
+}
+
+
+/* =========================
+   TÍTULO
+========================= */
+
+.seccion-titulo {
+    font-size: 14px;
+    letter-spacing: 4px;
+    color: #777;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+}
+
+
+/* =========================
+   CARRUSEL
+========================= */
+
+.carrusel-container {
+    width: 100%;
+    max-width: 1100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    position: relative;
+}
+
+
+/* =========================
+   PROYECTOS
+========================= */
+
+.proyecto-card {
+    display: none;
+    width: 100%;
+    max-width: 800px;
+    text-align: center;
+    animation: fadeIn 0.4s ease-in-out;
+}
+
+.proyecto-card.activo {
+    display: block;
+}
+
+
+/* =========================
+   ANIMACIÓN
+========================= */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.98);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+
+/* =========================
+   VIDEO
+========================= */
+
+.video-box {
+    width: 100%;
+    background: #000;
+    border: 1px solid #222;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+}
+
+.mi-video {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    display: block;
+}
+
+
+/* =========================
+   INFORMACIÓN DEL PROYECTO
+========================= */
+
+.proyecto-info {
+    margin-top: 25px;
+}
+
+.proyecto-info h3 {
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: #fff;
+    margin-bottom: 8px;
+}
+
+.proyecto-info p {
+    font-size: 15px;
+    color: #888;
+    letter-spacing: 0.5px;
+}
+
+
+/* =========================
+   FLECHAS
+========================= */
+
+.flecha {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: white;
+    font-size: 24px;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+    z-index: 10;
+}
+
+.flecha:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.4);
+    transform: scale(1.05);
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    text-align: center;
+    padding: 10px 20px;
+    border-top: 1px solid #1a1a1a;
+    color: #666;
+    margin-top: 50px;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.footer-col h3 {
+    font-size: 14px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #aaa;
+    margin-bottom: 15px;
+}
+
+.social {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+.social img {
+    width: 24px;
+    height: 24px;
+    filter: invert(1);
+    opacity: 0.7;
+    transition: opacity 0.3s;
+}
+
+.social img:hover {
+    opacity: 1;
+}
+
+.footer-col p {
+    font-size: 14px;
+    color: #777;
+    margin: 5px 0;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 768px) {
+    .carrusel-container {
+        gap: 10px;
+    }
+
+    .flecha {
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+    }
+}
