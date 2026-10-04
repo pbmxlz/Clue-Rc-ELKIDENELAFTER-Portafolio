@@ -1,227 +1,228 @@
 /* =========================
-   1. RESET Y CONFIGURACIÓN GLOBAL
+   VARIABLES Y RESETEO GENERAL
 ========================= */
+:root {
+  --bg-color: #0b0b0b;
+  --card-bg: #141414;
+  --text-main: #ffffff;
+  --text-muted: #888888;
+  --accent-color: #ff0000;
+  --border-radius: 14px;
+}
+
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  overflow-x: hidden;
 }
 
 body {
-    background-color: #0b0b0b;
-    color: #ffffff;
-    font-family: 'Helvetica Neue', Arial, sans-serif;
-    overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: clamp(1rem, 3vw, 2.5rem);
 }
 
 /* =========================
-   2. HERO
+   HERO SECTION
 ========================= */
 #hero {
-    min-height: 30vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 120px 20px 40px 20px;
+  text-align: center;
+  width: 100%;
+  max-width: 900px;
+  margin-bottom: clamp(1.5rem, 4vw, 3rem);
 }
 
 #hero h1 {
-    font-size: clamp(32px, 5vw, 60px);
-    font-weight: 700;
-    letter-spacing: 2px;
+  font-size: clamp(1.4rem, 4.5vw, 2.6rem);
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  margin-bottom: 0.6rem;
+  line-height: 1.15;
 }
 
 #hero p {
-    margin-top: 10px;
-    color: #888;
-    font-size: clamp(14px, 2vw, 18px);
-    letter-spacing: 1px;
+  font-size: clamp(0.75rem, 1.8vw, 0.95rem);
+  color: var(--text-muted);
+  line-height: 1.5;
+  padding: 0 1rem;
 }
 
 /* =========================
-   3. PORTAFOLIO Y CARRUSEL
+   PORTAFOLIO & CARRUSEL
 ========================= */
 #portfolio {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 60px 20px;
-    position: relative;
+  width: 100%;
+  max-width: 520px; /* Ancho perfecto para mantener estética de app/tarjeta móvil */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto 0;
 }
 
 .seccion-titulo {
-    font-size: 14px;
-    letter-spacing: 4px;
-    color: #777;
-    text-transform: uppercase;
-    margin-bottom: 30px;
+  font-size: 0.75rem;
+  letter-spacing: 3px;
+  color: var(--text-muted);
+  margin-bottom: 1.2rem;
+  font-weight: 600;
 }
 
 .carrusel-container {
-    width: 100%;
-    max-width: 1100px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
-    position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: clamp(0.4rem, 2vw, 1rem);
+  position: relative;
 }
 
 /* =========================
-   4. TARJETAS DE PROYECTO
+   TARJETAS DE PROYECTOS
 ========================= */
 .proyecto-card {
-    display: none;
-    width: 100%;
-    max-width: 800px;
-    text-align: center;
-    animation: fadeIn 0.4s ease-in-out;
+  display: none; /* Ocultas por defecto, la clase .activo las muestra */
+  width: 100%;
+  background: var(--card-bg);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  animation: fadeIn 0.3s ease-in-out;
 }
 
 .proyecto-card.activo {
-    display: block;
+  display: block;
 }
 
 @keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: scale(0.98);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
+  from { opacity: 0; transform: scale(0.98); }
+  to { opacity: 1; transform: scale(1); }
 }
 
+/* Contenedor responsivo 16:9 para videos de YouTube */
 .video-box {
-    width: 100%;
-    background: #000;
-    border: 1px solid #222;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%; /* Relación de aspecto 16:9 estricta */
+  height: 0;
+  background: #000;
 }
 
 .mi-video {
-    width: 100%;
-    aspect-ratio: 16 / 9;
-    object-fit: cover;
-    display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
 }
 
 .proyecto-info {
-    margin-top: 25px;
+  padding: clamp(1rem, 2.5vw, 1.4rem);
+  text-align: center;
 }
 
 .proyecto-info h3 {
-    font-size: 24px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    color: #fff;
-    margin-bottom: 8px;
+  font-size: clamp(0.95rem, 2.5vw, 1.2rem);
+  font-weight: 700;
+  margin-bottom: 0.3rem;
+  color: #fff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; /* Evita desbordamientos si el título es larguísimo */
 }
 
 .proyecto-info p {
-    font-size: 15px;
-    color: #888;
-    letter-spacing: 0.5px;
+  font-size: clamp(0.75rem, 1.8vw, 0.85rem);
+  color: var(--text-muted);
 }
 
 /* =========================
-   5. FLECHAS DE NAVEGACIÓN
+   BOTONES DE NAVEGACIÓN (FLECHAS)
 ========================= */
 .flecha {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    color: white;
-    font-size: 24px;
-    width: 55px;
-    height: 55px;
-    border-radius: 50%;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s ease;
-    flex-shrink: 0;
-    z-index: 10;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  width: clamp(34px, 8vw, 44px);
+  height: clamp(34px, 8vw, 44px);
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+  user-select: none;
 }
 
 .flecha:hover {
-    background: rgba(255, 255, 255, 0.2);
-    border-color: rgba(255, 255, 255, 0.4);
-    transform: scale(1.05);
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.05);
+}
+
+.flecha:active {
+  transform: scale(0.95);
 }
 
 /* =========================
-   6. FOOTER Y CONTACTO
+   FOOTER
 ========================= */
 footer {
-    text-align: center;
-    padding: 40px 20px 20px 20px;
-    border-top: 1px solid #1a1a1a;
-    margin-top: 80px;
-}
-
-.footer-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-.footer-col {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  width: 100%;
+  text-align: center;
+  margin-top: clamp(1.5rem, 4vw, 3rem);
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
 }
 
 .footer-col h3 {
-    font-size: 14px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: #aaa;
-    margin-bottom: 15px;
+  font-size: 0.7rem;
+  letter-spacing: 2px;
+  color: var(--text-muted);
+  margin-bottom: 0.4rem;
 }
 
-/* Correo de contacto */
-.footer-col a[href^="mailto:"] {
-    text-decoration: none;
-    color: #777;
-    font-size: 14px;
-    transition: color 0.3s ease;
+.footer-col a {
+  color: var(--text-main);
+  text-decoration: none;
+  font-size: clamp(0.85rem, 2vw, 1rem);
+  font-weight: 500;
+  transition: color 0.2s;
 }
 
-.footer-col a[href^="mailto:"]:hover {
-    color: #ffffff;
+.footer-col a:hover {
+  color: var(--accent-color);
+  text-decoration: underline;
 }
 
-/* Copyright inferior */
-.footer-bottom {
-    margin-top: 40px;
-    border-top: 1px solid #111;
-    padding-top: 20px;
-    color: #555;
-    font-size: 13px;
-    letter-spacing: 0.5px;
+.footer-bottom p {
+  font-size: 0.75rem;
+  color: var(--text-muted);
 }
 
 /* =========================
-   7. DISEÑO RESPONSIVE
+   MEDIA QUERIES EXTREMAS (Móviles pequeños tipo Galaxy Fold)
 ========================= */
-@media (max-width: 768px) {
-    .carrusel-container {
-        gap: 10px;
-    }
-
-    .flecha {
-        width: 40px;
-        height: 40px;
-        font-size: 18px;
-    }
+@media (max-width: 360px) {
+  body {
+    padding: 0.5rem;
+  }
+  
+  .carrusel-container {
+    gap: 0.2rem;
+  }
 }
